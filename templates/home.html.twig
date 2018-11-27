@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron mt-3">
+            <h1 class="display-3">Bienvenue sur SymBNB</h1>
+            <p class="lead">Nous mettons en relation les voyageurs et les propriétaires qui veulent profiter d'opportunités et gagner de l'argent en proposant leurs biens à la location.</p>
+            <hr class="my-4">
+            <p>Vous êtes voyageur et vous voulez voir où vous pourrez loger lors de votre prochain déplacement ?</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Voir nos annonces</a>
+            </p>
+        </div>
+
+        <h2>Les biens les mieux notés</h2>
+        <div class="row mt-4 mb-4">
+            <div class="col-md-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-center">
+                        3 chambres, <strong>49€/nuit</strong><br>
+                        <small>Pas encore noté</small>
+                    </div>
+                    <img src="https://via.placeholder.com/500x300" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Appartement 1
+                        </h4>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa dolor dolores expedita, magni nemo nesciunt officia quisquam reiciendis soluta!
+                        </p>
+                        <a href="#" class="btn btn-secondary">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-center">
+                        3 chambres, <strong>70€/nuit</strong><br>
+                        <small>Pas encore noté</small>
+                    </div>
+                    <img src="https://via.placeholder.com/500x300" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Appartement 2
+                        </h4>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa dolor dolores expedita, magni nemo nesciunt officia quisquam reiciendis soluta!
+                        </p>
+                        <a href="#" class="btn btn-secondary">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-center">
+                        5 chambres, <strong>100€/nuit</strong><br>
+                        <small>Pas encore noté</small>
+                    </div>
+                    <img src="https://via.placeholder.com/500x300" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Appartement 3
+                        </h4>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa dolor dolores expedita, magni nemo nesciunt officia quisquam reiciendis soluta!
+                        </p>
+                        <a href="#" class="btn btn-secondary">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Les propriétaires les mieux notés</h2>
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="card border-secondary mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Emile Dupont
+                        </h4>
+                        <hr>
+                        <div class="card-text">
+                            <img src="https://via.placeholder.com/64x64" alt="Avatar propriétaires" class="float-left mr-3">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, totam!
+                            </p>
+                            <a href="#" class="btn btn-secondary float-right">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-secondary mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Louise Machin
+                        </h4>
+                        <hr>
+                        <div class="card-text">
+                            <img src="https://via.placeholder.com/64x64" alt="Avatar propriétaires" class="float-left mr-3">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, totam!
+                            </p>
+                            <a href="#" class="btn btn-secondary float-right">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
