@@ -21,21 +21,22 @@ class AdType extends AbstractType
      * @param $placeholder
      * @return array
      */
-    private function getConfiguration($label, $placeholder)
+    private function getConfiguration($label, $placeholder, $options = [])
     {
-        return [
+        return array_merge ([
             'label' => $label,
             'attr' => [
-                'placeholder' => $placeholder
-            ]
-        ];
+                'placeholder' => $placeholder]
+            ], $options);
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('title', TextType::class, $this->getConfiguration("Titre", 'Taper un titre'))
-            ->add('slug', TextType::class, $this->getConfiguration("Adresse web", "Taper adresse web"))
+            ->add('slug', TextType::class, $this->getConfiguration("Adresse web", "Taper adresse web", [
+                'required' => false
+            ]))
             ->add('introduction', TextareaType::class, $this->getConfiguration("Introduction", "Donner une description globale de l'annonce"))
             ->add('content', TextareaType::class, $this->getConfiguration("Description", "Donner une description détaillée du logement"))
             ->add('rooms', IntegerType::class, $this->getConfiguration("Nombre de chambre", "Indiquer le nombre de chambre(s) disponible(s)"))

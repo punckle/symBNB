@@ -1,23 +1,23 @@
-{% extends'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Création d'une annonce{% endblock %}
+{% block title %}Editer une annonce{% endblock %}
 
 {% form_theme form _self %}
 
 {% block body %}
 
     <div class="container">
-        <h1>Créer une annonce</h1>
+        <h1>Editer une annonce : {ad.title}</h1>
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <button class="btn btn-primary">{{ button_label|default('Créer l\'annonce') }}</button>
+        <button class="btn btn-primary">{{ button_label|default('Editer l\'annonce') }}</button>
         {{ form_end(form) }}
     </div>
 
 {% endblock %}
 
 {% block _ad_images_widget %}
-    <p>Ici, vous pouvez ajouter vos images</p>
+    <p>Ici, vous pouvez éditer vos images</p>
     {{ form_widget(form) }}
 
     {# Pour gérer bug #}
@@ -77,4 +77,3 @@
 
     </script>
 {% endblock %}
-
