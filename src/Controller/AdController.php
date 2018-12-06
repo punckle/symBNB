@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Image;
 use App\Form\AdType;
 use App\Repository\AdRepository;
 use App\Entity\Ad;

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Ad;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -40,6 +41,10 @@ class AdType extends AbstractType
             ->add('rooms', IntegerType::class, $this->getConfiguration("Nombre de chambre", "Indiquer le nombre de chambre(s) disponible(s)"))
             ->add('price', MoneyType::class, $this->getConfiguration("Prix", "Indiquer le prix par nuit"))
             ->add('coverImage', UrlType::class, $this->getConfiguration("URL de l'image de couverture", "Entrer l'adresse URL d'une image qui illustrera l'annonce"))
+            ->add('images', CollectionType::class, [
+                'entry_type' => ImagesType::class,
+                'allow_add' => true
+            ])
         ;
     }
 
