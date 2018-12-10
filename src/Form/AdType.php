@@ -44,7 +44,8 @@ class AdType extends AbstractType
             ->add('coverImage', UrlType::class, $this->getConfiguration("URL de l'image de couverture", "Entrer l'adresse URL d'une image qui illustrera l'annonce"))
             ->add('images', CollectionType::class, [
                 'entry_type' => ImagesType::class,
-                'allow_add' => true
+                'allow_add' => true,
+                'allow_delete' => true
             ])
         ;
     }
