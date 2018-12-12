@@ -51,19 +51,17 @@
 {#Fin Carousel#}
             </div>
             <div class="col">
+                {% set a = ad.author %}
                 <div class="row">
-                    <div class="col-4">
-                        <img src="https://via.placeholder.com/64x64" alt="avatar">
+                    <div class="col-3">
+                        <img class="avatar" src="{{ a.picture }}" alt="avatar de {{ a.fullName }}">
                     </div>
                     <div class="col">
-                        <h3>Joseph Dupont</h3>
-                        <span class="badge badge-primary">3 annonces</span>
+                        <h3>{{ a.fullname }}</h3>
+                        <span class="badge badge-primary">{{ a.ads|length }} annonces</span>
                     </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ipsam itaque quam quidem tempore.
-                    Accusamus amet aut cupiditate eum possimus?</p>
-                <p>Ad deleniti maiores minima temporibus totam. Aliquid culpa cumque in ipsum necessitatibus quod,
-                    tempore vitae. Aperiam earum labore laboriosam vero!</p>
+                {{ a.description|raw }}
             </div>
         </div>
     </div>

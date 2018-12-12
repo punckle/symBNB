@@ -21,7 +21,7 @@ security:
                 check_path: account_login
             logout:
                 path: account_logout
-                target: account_login
+                target: homepage
 
             # activate different ways to authenticate
 
