@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Ad;
 use App\Entity\PasswordUpdate;
 use App\Entity\User;
 use App\Form\AccountType;
 use App\Form\PasswordUpdateType;
 use App\Form\RegistrationType;
 use Doctrine\Common\Persistence\ObjectManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
@@ -81,6 +84,7 @@ class AccountController extends AbstractController
      * @param ObjectManager $manager
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/account/profile", name="account_profile")
+     * @IsGranted("ROLE_USER")
      */
     public function profile(Request $request, ObjectManager $manager)
     {
@@ -106,6 +110,11 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/update-password", name="account_password")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param UserPasswordEncoderInterface $encoder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @IsGranted("ROLE_USER")
      */
     public function updatePassword(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
@@ -146,6 +155,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account", name="account_index")
+     * @IsGranted("ROLE_USER")
      */
     public function myAccount()
     {

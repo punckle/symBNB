@@ -7,6 +7,8 @@ use App\Form\AdType;
 use App\Repository\AdRepository;
 use App\Entity\Ad;
 use Doctrine\Common\Persistence\ObjectManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,6 +36,7 @@ class AdController extends AbstractController
      * @param ObjectManager $manager
      * @return Response
      * @Route("/ads/new", name="ads_create")
+     * @IsGranted("ROLE_USER")
      */
     public function create(Request $request, ObjectManager $manager)
     {
@@ -88,6 +91,8 @@ class AdController extends AbstractController
      * @param Ad $ad
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      * @Route("/ads/{slug}/edit", name="ad_edit")
+     * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message="Cette annonce ne vous appartient pas,
+         vous ne pouvez pas la modifier")
      */
     public function edit(Request $request, ObjectManager $manager, Ad $ad)
     {
@@ -116,9 +121,27 @@ class AdController extends AbstractController
         }
 
         return $this->render('ad/edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'ad' => $ad
             ]);
 
+    }
+
+    /**
+     * @param Ad $ad
+     * @param ObjectManager $manager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/ads/{slug}/delete", name="ad_delete")
+     * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()")
+     */
+    public function delete(Ad $ad, ObjectManager $manager)
+    {
+        $manager->remove($ad);
+        $manager->flush();
+
+        $this->addFlash('success', "Votre annonce a bien été supprimée");
+
+        return $this->redirectToRoute('ads_index');
     }
 
 }
