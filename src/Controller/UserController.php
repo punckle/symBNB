@@ -10,6 +10,8 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/user/{slug}", name="user_show")
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(User $user)
     {
