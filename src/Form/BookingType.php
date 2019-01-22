@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Booking;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,7 +25,8 @@ class BookingType extends ApplicationType
             ))
             ->add('comment', TextareaType::class, $this->getConfiguration(
                 false,
-                "Si vous avez un commentaire, laissez-le ici"
+                "Si vous avez un commentaire, laissez-le ici",
+                ["required" => false]
             ))
         ;
     }
