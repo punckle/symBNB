@@ -2,6 +2,10 @@
 
 {% block title %}Réserver l'annonce : {{ ad.title }}{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <h1>Réservez pour l'annonce : {{ ad.title }}</h1>
@@ -26,4 +30,30 @@
         <button type="submit" class="btn btn-success">Je réserve !</button>
         {{ form_end(form) }}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.fn.datepicker.dates['fr'] = {
+                days: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+                daysShort: ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+                daysMin: ["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"],
+                months: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre"],
+                monthsShort: ["Jan", "Fev", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Dec"],
+                today: "Aujourd'hui"
+            };
+            $('#booking_startDate, #booking_endDate').datepicker({
+                format: 'dd/mm/yyyy',
+                datesDisabled: [
+                    {% for day in ad.notAvailableDays %}
+                        "{{ day.format('d/m/Y') }}",
+                    {% endfor %}
+                ],
+                startDate: new Date(),
+                language: "fr"
+            });
+        })
+    </script>
 {% endblock %}
