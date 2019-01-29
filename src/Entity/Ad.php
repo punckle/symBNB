@@ -106,6 +106,24 @@ class Ad
         }
     }
 
+    /**
+     * @param User $author
+     * @return mixed|null
+     * Permet de récupérer le commentaire d'un auteur par rapport à une annonce
+     */
+    public function getCommentFromAuthor(User $author)
+    {
+        foreach($this->comments as $comment)
+        {
+            if ($comment->getAuthor() === $author) return $comment;
+        }
+        return null;
+    }
+
+    /**
+     * @return float|int
+     * Permet d'obtenir moyenne globale des notes pour cette annonce
+     */
     public function getAvgRatings()
     {
         //Calculer la somme des notations
