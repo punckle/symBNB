@@ -12,6 +12,8 @@
                     <td>Date création</td>
                     <td>Réservé par</td>
                     <td>Annonce</td>
+                    <td class="text-center">Durée</td>
+                    <td class="text-center">Montant</td>
                     <td></td>
                 </tr>
             </thead>
@@ -25,9 +27,11 @@
                             {{ booking.booker.fullName }}
                         </td>
                         <td>{{ booking.ad.title }}</td>
+                        <td class="text-center">{{ booking.duration }}</td>
+                        <td class="text-center">{{ booking.amount }} €</td>
                         <td>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                            <a href="{{ path('admin_booking_edit', {'id': booking.id}) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                            <a href="{{ path("admin_booking_delete", {'id': booking.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 {% endfor %}
