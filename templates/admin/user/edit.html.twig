@@ -1,0 +1,29 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modification de {{ user.fullName }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1 class="my-5">Modification du profil de {{ user.fullName }}</h1>
+    <div class="alert alert-primary my-3">
+        <div class="row">
+            <div class="col-2">
+                <img src="{{ user.picture }}" alt="avatar de {{ user.fullName }}" class="avatar avatar-large">
+            </div>
+            <div class="col">
+                <p>
+                    <br>
+                    <strong>Nom : </strong>{{ user.lastName }}<br>
+                    <strong>Prénom : </strong>{{ user.firstName }}<br>
+                    <strong>Email : </strong>{{ user.email }}<br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary my-4">Enregistrer les modifications</button>
+    {{ form_end(form) }}
+
+{% endblock %}
